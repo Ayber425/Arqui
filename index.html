@@ -46,6 +46,107 @@
             background-color: var(--bg-white);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ==========================================================================
+           SISTEMA DE ANUNCIOS MOLESTOS (CUENTA NO PAGADA)
+           ========================================================================== */
+        body::before {
+            content: "CUENTA GRATUITA - ADVERTENCIA DE PAGO - DEMO EXPIRA EN 24 HORAS • ";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: rgba(255, 0, 0, 0.07);
+            text-transform: uppercase;
+            transform: rotate(-25px);
+            transform-origin: 0 0;
+            pointer-events: none;
+            z-index: 99999;
+            line-height: 140px;
+            letter-spacing: 5px;
+            white-space: normal;
+            word-wrap: break-word;
+            display: block;
+            padding-top: 100px;
+        }
+
+        .banner-impago {
+            background: #ff1e1e;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10001;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            text-transform: uppercase;
+            border-bottom: 3px solid #b30000;
+        }
+
+        .banner-impago span {
+            animation: parpadeoAlerta 1s infinite alternate;
+        }
+
+        .popup-impago {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ffffff;
+            border: 3px solid #ff1e1e;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 20px;
+            width: 320px;
+            z-index: 10001;
+            font-family: var(--font-sans);
+        }
+
+        .popup-impago h4 {
+            color: #ff1e1e;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .popup-impago p {
+            font-size: 0.8rem;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .btn-anuncio {
+            display: block;
+            background: #ff1e1e;
+            color: #fff !important;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 8px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-bottom: 2px solid #b30000;
+        }
+
+        .btn-anuncio:hover {
+            background: #d61515;
+        }
+
+        @keyframes parpadeoAlerta {
+            0% { opacity: 0.4; }
+            100% { opacity: 1; }
         }
 
         .container {
@@ -182,7 +283,7 @@
            ========================================================================== */
         .main-header {
             position: fixed;
-            top: 0;
+            top: 41px; /* Ajustado para el banner de impago */
             left: 0;
             width: 100%;
             background-color: rgba(255, 255, 255, 0.95);
@@ -243,7 +344,7 @@
            ========================================================================== */
         .hero-section {
             position: relative;
-            padding: 160px 0 100px 0;
+            padding: 200px 0 100px 0; /* Ajustado para compensar el banner */
             background-color: var(--bg-white);
             min-height: 90vh;
             display: flex;
@@ -758,7 +859,10 @@
                 display: none;
             }
             .hero-section {
-                padding: 120px 0 60px 0;
+                padding: 160px 0 60px 0;
+            }
+            .main-header {
+                top: 41px;
             }
             .main-nav {
                 display: none; 
@@ -778,10 +882,28 @@
             .header-container {
                 padding: 15px;
             }
+            .popup-impago {
+                width: calc(100% - 40px);
+                left: 20px;
+                bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- ADVERTENCIA DE PAGA / BANNER SUPERIOR -->
+    <div class="banner-impago">
+        ⚠️ ATENCIÓN: Sitio en periodo de prueba gratuito (24 Horas). <span>¡PENDIENTE DE PAGO!</span>
+    </div>
+
+    <!-- POPUP FLOTANTE PERSISTENTE -->
+    <div class="popup-impago">
+        <h4><i class="fa-solid fa-triangle-exclamation"></i> Cuenta de Prueba</h4>
+        <p>Este sitio web se encuentra alojado bajo una licencia temporal gratuita. Para remover esta advertencia y activar permanentemente el dominio, contacte al desarrollador.</p>
+        <!-- Actualizado con el enlace directo a tu número de WhatsApp -->
+        <a href="https://wa.me/51931255686?text=Hola,%20solicito%20la%20activación%20y%20pago%20de%20licencia%20para%20la%20web%20Archidesign%20Cipriano." target="_blank" class="btn-anuncio">Adquirir Licencia Completa</a>
+    </div>
 
     <!-- CABECERA / NAVEGACIÓN -->
     <header class="main-header">
@@ -841,7 +963,7 @@
                     <div class="mv-boxes">
                         <div class="mv-box">
                             <h3><i class="fa-solid fa-bullseye"></i> Misión</h3>
-                            <p>Diseñar espacios interiores que combinen belleza y funcionalidad de manera armoniosa, applying soluciones innovadoras que superen expectativas y asegurando que el buen diseño esté al alcance de todos sin necesidad de grandes inversiones.</p>
+                            <p>Diseñar espacios interiores que combinen belleza y funcionalidad de manera armoniosa, aplicando soluciones innovadoras que superen expectativas y asegurando que el buen diseño esté al alcance de todos sin necesidad de grandes inversiones.</p>
                         </div>
                         <div class="mv-box">
                             <h3><i class="fa-solid fa-eye"></i> Visión</h3>
